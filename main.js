@@ -1,10 +1,20 @@
-const listadoNotas = [5, 7, 3]
+let cant = prompt("Ingrese la cantidad de alumnos que desee cargar")
+
+cant++ 
+
+for(let i=1 ; i < cant ; i++) {
+    let Nota = prompt ("Ingrese la nota del alumno " + i )
+    if (Nota > 6) 
+    {
+        alert ("El alumno" +i+ "esta aprobado") 
+    }
+    else
+    {
+        alert ("El alumno" +i+ "esta desaprobado") 
+    }
+
+}
 
 
-let sumadorDeNotas = 0;
 
 
-for (let i =0; i < 3; i++){
-    sumadorDeNotas = sumadorDeNotas + listadoNotas[posicion];
-} 
-console.log (sumadorDeNotas);
