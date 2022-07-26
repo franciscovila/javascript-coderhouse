@@ -3,13 +3,24 @@ const carrito = [];
 function agregarAlCarrito(producto){
 carrito.push(producto);
 console.log(carrito);
+let cartNumber = parseInt(document.getElementById('cartNumber').innerHTML);
+cartNumber++;
+document.getElementById('cartNumber').innerHTML = cartNumber;
 }
+
 
 
 
 function borrarProductoDelCarrito(){
         carrito.pop();
         console.log(carrito);
+        let cartNumber = parseInt(document.getElementById('cartNumber').innerHTML);
+        if (cartNumber != 0){
+        cartNumber--;
+        document.getElementById('cartNumber').innerHTML = cartNumber;      
+        }
+        
+        
 }
 
 // ACUMULADOR
@@ -32,3 +43,4 @@ const actualizado = miCompra.map ((el) => {
                 });
 
 console.log(actualizado);
+
