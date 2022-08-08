@@ -1,4 +1,9 @@
-const carrito = [];
+const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+document.getElementById('cartNumber').innerHTML = `${carrito.length} - $${total}`;
+
+
+
 
 function agregarAlCarrito(producto){
 carrito.push(producto);
@@ -6,6 +11,9 @@ console.log(carrito);
 let cartNumber = parseInt(document.getElementById('cartNumber').innerHTML);
 cartNumber++;
 document.getElementById('cartNumber').innerHTML = cartNumber;
+localStorage.setItem('carrito', JSON.stringify(carrito));
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+document.getElementById('cartNumber').innerHTML = `${carrito.length} - $${total}`;
 }
 
 
@@ -15,7 +23,10 @@ function borrarProductoDelCarrito(){
         let cartNumber = parseInt(document.getElementById('cartNumber').innerHTML);
         if (cartNumber != 0){
         cartNumber--;
-        document.getElementById('cartNumber').innerHTML = cartNumber;      
+        document.getElementById('cartNumber').innerHTML = cartNumber;  
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+        document.getElementById('cartNumber').innerHTML = `${carrito.length} - $${total}`;
         }
         
         
@@ -36,22 +47,40 @@ function prueba ()
 for (const producto of productos) {
         let contenedor = document.createElement("div");
         contenedor.id = producto.id;
-        contenedor.innerHTML = ` <div class="container px-4 px-lg-5 mt-5" >
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-        <div class="col mb-5">
-        <div class="card h-100">
-        <h5 class="fw-bolder">${producto.title}</h5>
-        <p>${producto.price}</p>
-        <img class="card-img-top" src= ${producto.img} />
-        <div class="card-body p-4">
-        <div class="text-center">
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-        <a class="btn btn-outline-dark mt-auto"
-        href="#">Agregar al Carrito</a> 
-        `
-        document.getElementById('420').appendChild(contenedor)
+        contenedor.innerHTML = `
+<div class="col mb-5">
+<div class="card h-100">
+        <!-- Sale badge-->
+<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        <!-- Product image-->
+<img class="card-img-top" src="${producto.img}" alt="..." />
+        <!-- Product details-->
+<div class="card-body p-4">
+<div class="text-center">
+        <!-- Product name-->
+<h5 class="fw-bolder">${producto.title}</h5>
+        <!-- Product price-->
+$${producto.price} 
+</div>
+</div>
+<!-- Product actions-->
+<div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+<div class="text-center"><a class="btn btn-outline-dark mt-auto " 
+onclick= "agregarAlCarrito({id: ${producto.id}, name: '${producto.title}', price: ${producto.price} })"
+href="#">Agregar al carrito</a></div>
+</div>
+</div>
+</div>
+`
+document.getElementById('cardContainer').appendChild(contenedor)
 }
+
+let botonsillo = document.createElement("div");
+botonsillo.innerHTML = `<div class="text-center"><a class="btn btn-primary mt-auto " 
+onclick= "borrarProductoDelCarrito(); "
+href="#">Borrar último producto del carrito</a>
+</div>`
+document.getElementById('cardContainer').appendChild(botonsillo)
 }
 
 prueba ();
