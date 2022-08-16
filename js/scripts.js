@@ -21,6 +21,11 @@ carrito.push(producto);
   document.getElementById(
     "cartNumber"
   ).innerHTML = `${carrito.length} - $${total}`;
+  Swal.fire({
+  icon: 'success',
+  title: 'Producto agregado al carrito!',
+  text: 'Gracias por elegirnos!',
+  })
 }
 
 
@@ -30,10 +35,15 @@ function borrarProductoDelCarrito() {
   console.log(carrito);
   let cartNumber = parseInt(document.getElementById("cartNumber").innerHTML);
   (cartNumber != 0) && cartRemover();
+  Swal.fire({
+    icon: 'error',
+    title: 'Producto eliminado del carrito!',
+    text: 'Gracias por elegirnos!',
+    })
   }
 
 function cartRemover() 
- {
+{
   cartNumber--;
   document.getElementById("cartNumber").innerHTML = cartNumber;
   localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -99,7 +109,7 @@ href="#">Agregar al carrito</a></div>
 </div>
 </div>
 </div>
-`;
+`
     document.getElementById("cardContainer").appendChild(contenedor);
   }
 
@@ -113,4 +123,3 @@ href="#">Borrar último producto del carrito</a>
 
 prueba();
 
-let botton = getElementById;
