@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "title": "Remera Negra XL",
+        "price": 5300,
+        "img": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/144/208/products/whatsapp-image-2021-03-27-at-16-42-00-31-1f5e74dddd15eeca4c16182787449474-240-0.jpeg"
+    },   
+    {
+        "id": 2,
+        "title": "Pantalon Cargo",
+        "price": 4200,
+        "img": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/015/914/products/bclub11-e12dc76e00b566682016179053634854-1024-1024.jpg"
+    },
+    
+    {
+        "id": 3,
+        "title": "Buzo XL",
+        "price": 4000,
+        "img": "https://cdn.shopify.com/s/files/1/0527/0008/6469/products/HOMBREB-NG-A_bece5452-3a7b-467c-841a-cf3e5d50e1ea_2048x.jpg?v=1647277362"
+    }
+]
