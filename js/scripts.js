@@ -55,7 +55,6 @@ document.getElementById(
 
 function agregarAlCarrito (producto) {
 carrito.push(producto);
-  console.log(carrito);
   let cartNumber = parseInt(document.getElementById("cartNumber").innerHTML);
   cartNumber++;
   document.getElementById("cartNumber").innerHTML = cartNumber;
@@ -78,7 +77,6 @@ carrito.push(producto);
 
 function borrarProductoDelCarrito() {
   carrito.pop();
-  console.log(carrito);
   let cartNumber = parseInt(document.getElementById("cartNumber").innerHTML);
   (cartNumber != 0) && cartRemover();
   Swal.fire({
